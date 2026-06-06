@@ -4,6 +4,7 @@ import {
   FaLinkedin,
   FaInstagram,
   FaEnvelope,
+   FaFacebookF,
   FaPhone,
 } from "react-icons/fa";
 
@@ -22,44 +23,44 @@ export default function Footer() {
             applications.
           </p>
 
-          <div className="mt-6 flex gap-4">
-            <a
-              href="https://github.com/Vishwakarmasuraj333"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-gray-100 p-3 text-amber-500 transition-all duration-300 hover:scale-110 hover:bg-cyan-500 hover:text-white dark:bg-white/10"
-            >
-              <FaGithub />
-            </a>
+       <div className="mt-6 flex gap-4">
+  <a
+    href="https://github.com/Vishwakarmasuraj333"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="rounded-full bg-gray-100 p-3 text-amber-500 transition-all duration-300 hover:scale-110 hover:bg-cyan-500 hover:text-white dark:bg-white/10"
+  >
+    <FaGithub />
+  </a>
 
-            <a
-              href="https://www.linkedin.com/in/suraj-vishwakarma-2ab64436a"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-gray-100 text-blue-500 p-3 transition-all duration-300 hover:scale-110 hover:bg-cyan-500 hover:text-white dark:bg-white/10"
-            >
-              <FaLinkedin />
-            </a>
+  <a
+    href="https://www.linkedin.com/in/suraj-vishwakarma-2ab64436a"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="rounded-full bg-gray-100 p-3 text-blue-500 transition-all duration-300 hover:scale-110 hover:bg-cyan-500 hover:text-white dark:bg-white/10"
+  >
+    <FaLinkedin />
+  </a>
 
-            <a
-              href="https://www.instagram.com/surajvishwakarma_bittu?igsh=NXlyNHBrbjNvbGJ0&utm_source=ig_contact_invite"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-gray-100 text-pink-500 p-3 transition-all duration-300 hover:scale-110 hover:bg-cyan-500 hover:text-white dark:bg-white/10"
-            >
-              <FaInstagram />
-            </a>
+  <a
+    href="https://www.instagram.com/surajvishwakarma_bittu?igsh=NXlyNHBrbjNvbGJ0&utm_source=ig_contact_invite"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="rounded-full bg-gray-100 p-3 text-pink-500 transition-all duration-300 hover:scale-110 hover:bg-cyan-500 hover:text-white dark:bg-white/10"
+  >
+    <FaInstagram />
+  </a>
 
-              <a
+  <a
     href="https://www.facebook.com/people/Vishwakarma-Suraj/pfbid02TJgNhWWsryXvGSSQfEXWbsFcbLbQ8ewDHZWJcBUPUfncHW8ph2cSxAruYqv8DGqLl/"
     target="_blank"
     rel="noopener noreferrer"
-    className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white hover:scale-110 transition"
+    className="rounded-full bg-gray-100 p-3 text-blue-600 transition-all duration-300 hover:scale-110 hover:bg-cyan-500 hover:text-white dark:bg-white/10"
   >
     <FaFacebookF />
   </a>
-          </div>
-        </div>
+</div>
+
 
         {/* Quick Links */}
         <div>
