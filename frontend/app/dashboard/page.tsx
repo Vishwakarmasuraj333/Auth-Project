@@ -50,7 +50,7 @@ export default function DashboardPage() {
 
   return (
     <main className="min-h-screen bg-white text-gray-900 transition-colors duration-300 dark:bg-[#050816] dark:text-white">
-      <HeroSection user={user} logout={logout} />
+    <HeroSection user={user as any} logout={logout} />
       <Aboutimgsection />
       <AboutSection />
       <SkillsSection />
