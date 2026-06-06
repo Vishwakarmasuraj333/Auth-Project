@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-const API_URL = process.env.NEXT_PUBLIC_API_URL!;
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -22,6 +23,12 @@ export default function RegisterPage() {
     setLoading(true);
     setSuccess("");
     setError("");
+
+    if (!API_URL) {
+      setError("API URL missing. Add NEXT_PUBLIC_API_URL in Vercel Environment Variables.");
+      setLoading(false);
+      return;
+    }
 
     try {
       const res = await fetch(`${API_URL}/register`, {
@@ -47,8 +54,9 @@ export default function RegisterPage() {
       setTimeout(() => {
         router.push("/dashboard");
       }, 1500);
-    } catch {
-      setError("Server connection failed. Please check your internet connection and try again.");
+    } catch (err) {
+      console.error("REGISTER_ERROR:", err);
+      setError("Server connection failed. Backend URL, CORS, or Render service issue.");
     } finally {
       setLoading(false);
     }
