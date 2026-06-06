@@ -12,6 +12,14 @@ import ContactSection from "../components/dashboard/ContactSection";
 import AISection from "../components/dashboard/AISection";
 import ExperienceTimeline from "../components/dashboard/ExperienceTimeline";
 import EducationSection from "../components/dashboard/EducationSection";
+
+type User = {
+  id?: string;
+  _id?: string;
+  name?: string;
+  email?: string;
+};
+
 export default function DashboardPage() {
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
@@ -25,7 +33,13 @@ export default function DashboardPage() {
       return;
     }
 
-    setUser(JSON.parse(savedUser));
+    try {
+      setUser(JSON.parse(savedUser));
+    } catch {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      router.push("/login");
+    }
   }, [router]);
 
   const logout = () => {
@@ -35,16 +49,15 @@ export default function DashboardPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#050816] text-white">
+    <main className="min-h-screen bg-white text-gray-900 transition-colors duration-300 dark:bg-[#050816] dark:text-white">
       <HeroSection user={user} logout={logout} />
       <Aboutimgsection />
       <AboutSection />
       <SkillsSection />
-         <AISection />
+      <AISection />
       <ExperienceTimeline />
       <EducationSection />
       <ProjectsSection />
-
       <ContactSection />
     </main>
   );
