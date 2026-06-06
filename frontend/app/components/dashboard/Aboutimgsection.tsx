@@ -21,27 +21,27 @@ export default function AboutHeroSection() {
                         </span>
                     </h2>
 
-   <div className="mb-6 h-12 overflow-hidden">
-  <div className="relative flex h-full items-center justify-center">
+                    <div className="mb-6 h-12 overflow-hidden">
+                        <div className="relative flex h-full items-center justify-center md:justify-start">
 
-    <span className="absolute inset-0 flex items-center justify-center animate-[fadeText_12s_infinite] text-center text-xl font-bold text-cyan-300 sm:text-3xl">
-      🚀 Full Stack Developer
-    </span>
+                            <span className="absolute inset-0 flex items-center justify-center md:justify-start animate-[fadeText_12s_infinite] text-center md:text-left text-xl font-bold text-cyan-300 sm:text-3xl">
+                                 Full Stack Developer 🚀
+                            </span>
 
-    <span className="absolute inset-0 flex items-center justify-center animate-[fadeText2_12s_infinite] text-center text-xl font-bold text-cyan-300 sm:text-3xl">
-      🧠 Problem Solver
-    </span>
+                            <span className="absolute inset-0 flex items-center justify-center md:justify-start animate-[fadeText2_12s_infinite] text-center md:text-left text-xl font-bold text-cyan-300 sm:text-3xl">
+                                🧠 Problem Solver
+                            </span>
 
-    <span className="absolute inset-0 flex items-center justify-center animate-[fadeText3_12s_infinite] text-center text-xl font-bold text-cyan-300 sm:text-3xl">
-      ⚛️ Frontend Engineer
-    </span>
+                            <span className="absolute inset-0 flex items-center justify-center md:justify-start animate-[fadeText3_12s_infinite] text-center md:text-left text-xl font-bold text-cyan-300 sm:text-3xl">
+                                Frontend Engineer ⚛️ 
+                            </span>
 
-    <span className="absolute inset-0 flex items-center justify-center animate-[fadeText4_12s_infinite] text-center text-xl font-bold text-cyan-300 sm:text-3xl">
-      ⚡ Backend Developer
-    </span>
+                            <span className="absolute inset-0 flex items-center justify-center md:justify-start animate-[fadeText4_12s_infinite] text-center md:text-left text-xl font-bold text-cyan-300 sm:text-3xl">
+                                ⚡ Backend Developer
+                            </span>
 
-  </div>
-</div>
+                        </div>
+                    </div>
 
                     <p className="mx-auto mb-8 max-w-2xl text-base leading-7 text-gray-300 sm:text-lg sm:leading-8 lg:mx-0">
                         I love solving real-world problems with clean UI, secure backend,
@@ -67,16 +67,16 @@ export default function AboutHeroSection() {
 
                     <div className="mt-8 flex justify-center gap-4 lg:justify-start">
                         {[
-                            ["https://github.com/Vishwakarmasuraj333", <FaGithub key="github" />],
+                            ["https://github.com/Vishwakarmasuraj333", <FaGithub key="github" className="text-yellow-500"/>],
                             [
                                 "https://www.linkedin.com/in/suraj-vishwakarma-2ab64436a",
-                                <FaLinkedin key="linkedin" />,
+                                <FaLinkedin key="linkedin"  className="text-cyan-500" />,
                             ],
                             [
                                 "https://www.instagram.com/surajvishwakarma_bittu",
-                                <FaInstagram key="instagram" />,
+                                <FaInstagram key="instagram" className="text-pink-500"/>,
                             ],
-                            ["mailto:itxsurajofficial@gmail.com", <FaEnvelope key="email" />],
+                            ["mailto:itxsurajofficial@gmail.com", <FaEnvelope key="email" className="text-purple-500" />],
                         ].map(([href, icon]) => (
                             <a
                                 key={String(href)}

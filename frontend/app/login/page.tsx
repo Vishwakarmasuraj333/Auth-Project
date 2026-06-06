@@ -87,7 +87,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden px-3 py-24 text-gray-950 transition-colors duration-300 sm:px-4 sm:py-28 dark:text-white">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -96,31 +96,33 @@ export default function LoginPage() {
         }}
       />
 
-      <div className="absolute inset-0 bg-black/75" />
+      <div className="absolute inset-0 bg-white/65 dark:bg-black/75" />
 
-      <div className="absolute top-10 left-10 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute -left-20 top-10 h-56 w-56 animate-pulse rounded-full bg-blue-500/20 blur-3xl sm:left-10 sm:h-80 sm:w-80" />
+      <div className="absolute -right-20 bottom-10 h-56 w-56 animate-pulse rounded-full bg-cyan-500/20 blur-3xl sm:right-10 sm:h-80 sm:w-80" />
 
       <form
         onSubmit={handleLogin}
-        className="relative z-10 w-full max-w-md backdrop-blur-xl bg-white/10 border border-white/20 p-8 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+        className="relative z-10 w-full max-w-[360px] rounded-2xl border border-gray-200 bg-white/90 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-colors duration-300 sm:max-w-md sm:rounded-3xl sm:p-8 dark:border-white/20 dark:bg-white/10 dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
       >
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white">Welcome Back</h1>
+        <div className="mb-6 text-center sm:mb-8">
+          <h1 className="text-3xl font-bold text-gray-950 sm:text-4xl dark:text-white">
+            Welcome Back
+          </h1>
 
-          <p className="text-gray-300 mt-2">
+          <p className="mt-2 text-sm text-gray-600 sm:text-base dark:text-gray-300">
             Login to access Suraj Vishwakarma Portfolio
           </p>
         </div>
 
         {success && (
-          <div className="mb-4 rounded-xl border border-green-500/30 bg-green-500/10 p-4 text-center text-green-400 font-medium">
+          <div className="mb-4 rounded-xl border border-green-500/30 bg-green-500/10 p-3 text-center text-sm font-medium text-green-600 sm:p-4 sm:text-base dark:text-green-400">
             ✅ {success}
           </div>
         )}
 
         {error && (
-          <div className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-center text-red-400 font-medium">
+          <div className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-center text-sm font-medium text-red-600 sm:p-4 sm:text-base dark:text-red-400">
             ❌ {error}
           </div>
         )}
@@ -128,7 +130,7 @@ export default function LoginPage() {
         <input
           type="email"
           placeholder="Email Address"
-          className="w-full bg-white/10 border border-white/20 text-white placeholder:text-gray-300 p-4 rounded-xl mb-4 outline-none focus:border-blue-500 transition"
+          className="mb-4 w-full rounded-xl border border-gray-300 bg-white p-3.5 text-sm text-gray-950 outline-none transition placeholder:text-gray-500 focus:border-blue-500 sm:p-4 sm:text-base dark:border-white/20 dark:bg-white/10 dark:text-white dark:placeholder:text-gray-300"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -137,18 +139,20 @@ export default function LoginPage() {
         <input
           type="password"
           placeholder="Password"
-          className="w-full bg-white/10 border border-white/20 text-white placeholder:text-gray-300 p-4 rounded-xl mb-5 outline-none focus:border-blue-500 transition"
+          className="mb-5 w-full rounded-xl border border-gray-300 bg-white p-3.5 text-sm text-gray-950 outline-none transition placeholder:text-gray-500 focus:border-blue-500 sm:p-4 sm:text-base dark:border-white/20 dark:bg-white/10 dark:text-white dark:placeholder:text-gray-300"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
 
         {siteKey ? (
-          <div className="mb-5 flex justify-center">
-            <ReCAPTCHA ref={captchaRef} sitekey={siteKey} />
+          <div className="mb-5 flex w-full justify-center overflow-hidden">
+            <div className="origin-top scale-[0.84] sm:scale-100">
+              <ReCAPTCHA ref={captchaRef} sitekey={siteKey} />
+            </div>
           </div>
         ) : (
-          <div className="mb-5 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-center text-red-400 text-sm">
+          <div className="mb-5 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-center text-sm text-red-500 dark:text-red-400">
             reCAPTCHA site key missing
           </div>
         )}
@@ -156,54 +160,54 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 disabled:opacity-60 disabled:cursor-not-allowed text-white p-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg cursor-pointer mb-6"
+          className="mb-6 w-full cursor-pointer rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 p-3.5 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:from-blue-700 hover:to-cyan-600 disabled:cursor-not-allowed disabled:opacity-60 sm:p-4 sm:text-lg"
         >
           {loading ? "Signing In..." : "Login"}
         </button>
 
         <div className="relative mb-6">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-white/20"></div>
+            <div className="w-full border-t border-gray-300 dark:border-white/20" />
           </div>
 
           <div className="relative flex justify-center">
-            <span className="bg-black/40 backdrop-blur-md px-4 text-gray-300 text-sm">
+            <span className="bg-white/80 px-4 text-xs text-gray-600 backdrop-blur-md sm:text-sm dark:bg-black/40 dark:text-gray-300">
               Or continue with
             </span>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-4 mt-6">
+        <div className="mt-6 flex items-center justify-center gap-3 sm:gap-4">
           <button
             type="button"
             onClick={() => socialLogin("google")}
-            className="w-14 h-14 flex items-center justify-center rounded-full bg-white hover:scale-110 transition-all duration-300 shadow-lg"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg transition-all duration-300 hover:scale-110 sm:h-14 sm:w-14"
           >
-            <FcGoogle size={28} />
+            <FcGoogle size={26} />
           </button>
 
           <button
             type="button"
             onClick={() => socialLogin("facebook")}
-            className="w-14 h-14 flex items-center justify-center rounded-full bg-blue-600 text-white hover:scale-110 transition-all duration-300 shadow-lg"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-all duration-300 hover:scale-110 sm:h-14 sm:w-14"
           >
-            <FaFacebookF size={22} />
+            <FaFacebookF size={20} />
           </button>
 
           <button
             type="button"
             onClick={() => socialLogin("github")}
-            className="w-14 h-14 flex items-center justify-center rounded-full bg-gray-900 text-white hover:scale-110 transition-all duration-300 shadow-lg"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 text-white shadow-lg transition-all duration-300 hover:scale-110 sm:h-14 sm:w-14 dark:bg-white dark:text-gray-950"
           >
-            <FaGithub size={24} />
+            <FaGithub size={22} />
           </button>
         </div>
 
-        <p className="text-center text-gray-300 mt-6">
+        <p className="mt-6 text-center text-sm text-gray-600 sm:text-base dark:text-gray-300">
           Don&apos;t have an account?
           <Link
             href="/register"
-            className="text-cyan-400 ml-2 hover:text-cyan-300 font-semibold"
+            className="ml-2 font-semibold text-cyan-600 hover:text-cyan-500 dark:text-cyan-400 dark:hover:text-cyan-300"
           >
             Create Account
           </Link>

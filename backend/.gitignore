@@ -8,3 +8,8 @@ node_modules
 .env.local
 dist
 build
+PORT=5000
+FRONTEND_URL=http://localhost:3000
+MONGO_URI=your_mongodb_url
+JWT_SECRET=your_secret
+RECAPTCHA_SECRET_KEY=your_secret_key
