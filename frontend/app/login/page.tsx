@@ -7,7 +7,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaGithub } from "react-icons/fa";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL!;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function LoginPage() {
   const router = useRouter();
@@ -29,8 +29,14 @@ export default function LoginPage() {
     setSuccess("");
     setError("");
 
+    if (!API_URL) {
+      setError("API URL missing. Add NEXT_PUBLIC_API_URL in Vercel Environment Variables.");
+      setLoading(false);
+      return;
+    }
+
     if (!siteKey) {
-      setError("reCAPTCHA site key missing. Check frontend .env.local file.");
+      setError("reCAPTCHA site key missing. Add NEXT_PUBLIC_RECAPTCHA_SITE_KEY in Vercel.");
       setLoading(false);
       return;
     }
@@ -68,14 +74,14 @@ export default function LoginPage() {
       localStorage.setItem("user", JSON.stringify(data.user));
 
       setSuccess("Authentication Successful • Redirecting to your portfolio...");
-
       captchaRef.current?.reset();
 
       setTimeout(() => {
         router.push("/dashboard");
       }, 1200);
-    } catch {
-      setError("Server not responding. Please check backend is running.");
+    } catch (err) {
+      console.error("LOGIN_ERROR:", err);
+      setError("Server connection failed. Backend URL, CORS, or Render service issue.");
       captchaRef.current?.reset();
     } finally {
       setLoading(false);
