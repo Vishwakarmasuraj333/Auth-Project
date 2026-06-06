@@ -11,7 +11,7 @@ export default function HomePage() {
           </p>
 
           <h1 className="mb-6 text-4xl font-extrabold leading-tight text-gray-950 sm:text-5xl md:text-6xl dark:text-white">
-            Welcome to My Professional Portfolio
+            Welcome to <span className="text-yellow-500">My</span> <span className="text-purple-500">Professional</span> <span className="text-pink-500">Portfolio</span>
           </h1>
 
           <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg md:mx-0 dark:text-gray-300">
