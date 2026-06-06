@@ -7,7 +7,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaGithub } from "react-icons/fa";
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
 export default function LoginPage() {
   const router = useRouter();
