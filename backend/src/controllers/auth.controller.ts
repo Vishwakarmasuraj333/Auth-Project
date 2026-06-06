@@ -7,7 +7,7 @@ const createToken = (userId: string) => {
   const secret = process.env.JWT_SECRET;
 
   if (!secret) {
-    throw new Error("JWT_SECRET missing");
+    throw new Error("JWT_SECRET missing in Render Environment Variables");
   }
 
   return jwt.sign({ userId }, secret, {
@@ -19,7 +19,7 @@ export const registerUser = async (req: Request, res: Response) => {
   try {
     const { name, email, password } = req.body;
 
-    if (!name || !email || !password) {
+    if (!name?.trim() || !email?.trim() || !password) {
       return res.status(400).json({
         success: false,
         message: "Name, email and password are required",
@@ -33,7 +33,9 @@ export const registerUser = async (req: Request, res: Response) => {
       });
     }
 
-    const existingUser = await User.findOne({ email });
+    const normalizedEmail = email.toLowerCase().trim();
+
+    const existingUser = await User.findOne({ email: normalizedEmail });
 
     if (existingUser) {
       return res.status(409).json({
@@ -45,8 +47,8 @@ export const registerUser = async (req: Request, res: Response) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
-      name,
-      email,
+      name: name.trim(),
+      email: normalizedEmail,
       password: hashedPassword,
     });
 
@@ -57,17 +59,17 @@ export const registerUser = async (req: Request, res: Response) => {
       message: "Register successful",
       token,
       user: {
-        id: user._id,
+        id: user._id.toString(),
         name: user.name,
         email: user.email,
       },
     });
-  } catch (error) {
-    console.log("Register error:", error);
+  } catch (error: any) {
+    console.error("REGISTER_ERROR:", error?.message || error);
 
     return res.status(500).json({
       success: false,
-      message: "Server error",
+      message: error?.message || "Server error",
     });
   }
 };
@@ -76,14 +78,16 @@ export const loginUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
 
-    if (!email || !password) {
+    if (!email?.trim() || !password) {
       return res.status(400).json({
         success: false,
         message: "Email and password are required",
       });
     }
 
-    const user = await User.findOne({ email });
+    const normalizedEmail = email.toLowerCase().trim();
+
+    const user = await User.findOne({ email: normalizedEmail });
 
     if (!user) {
       return res.status(401).json({
@@ -108,17 +112,17 @@ export const loginUser = async (req: Request, res: Response) => {
       message: "Login successful",
       token,
       user: {
-        id: user._id,
+        id: user._id.toString(),
         name: user.name,
         email: user.email,
       },
     });
-  } catch (error) {
-    console.log("Login error:", error);
+  } catch (error: any) {
+    console.error("LOGIN_ERROR:", error?.message || error);
 
     return res.status(500).json({
       success: false,
-      message: "Server error",
+      message: error?.message || "Server error",
     });
   }
 };
