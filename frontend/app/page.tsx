@@ -54,7 +54,7 @@ export default function HomePage() {
             <div className="absolute bottom-3 right-3 h-5 w-5 animate-pulse rounded-full border-2 border-white bg-green-500" />
           </div>
 
-          <h2 className="mb-2 text-center text-2xl font-bold text-yellow-500 sm:text-3xl dark:text-white">
+          <h2 className="mb-2 text-center text-2xl font-bold text-gray-950 sm:text-3xl dark:text-white">
             Suraj Vishwakarma
           </h2>
 
