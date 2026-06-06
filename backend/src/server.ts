@@ -10,15 +10,8 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "https://auth-project-h1vy.vercel.app",
-      "https://auth-project-three-theta.vercel.app",
-      "https://auth-project-h1vy-git-main-vishwakarmasuraj333s-projects.vercel.app",
-      "https://auth-project-h1vy-c7at27is5-vishwakarmasuraj333s-projects.vercel.app",
-    ],
-    credentials: true,
+    origin: "*",
+    credentials: false,
   })
 );
 
