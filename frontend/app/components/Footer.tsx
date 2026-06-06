@@ -49,6 +49,15 @@ export default function Footer() {
             >
               <FaInstagram />
             </a>
+
+              <a
+    href="https://www.facebook.com/people/Vishwakarma-Suraj/pfbid02TJgNhWWsryXvGSSQfEXWbsFcbLbQ8ewDHZWJcBUPUfncHW8ph2cSxAruYqv8DGqLl/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white hover:scale-110 transition"
+  >
+    <FaFacebookF />
+  </a>
           </div>
         </div>
 
